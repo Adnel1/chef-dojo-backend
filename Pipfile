@@ -20,6 +20,7 @@ psycopg2-binary = "*"
 asyncpg = "*"
 aiosqlite = "*"
 passlib = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
