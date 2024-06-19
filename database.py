@@ -6,7 +6,8 @@ import os
 
 load_dotenv()
 
-URL_DATABASE = 'postgresql://postgres:Cubaty$33@localhost:5432/back-end'
+# Fetch the DATABASE_URL from the environment variable
+URL_DATABASE = os.getenv('DATABASE_URL')
 
 engine = create_engine(URL_DATABASE)
 
