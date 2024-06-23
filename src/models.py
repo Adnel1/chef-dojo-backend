@@ -65,7 +65,7 @@ class User_Recipe(Base):
             "directions": self.directions,
         }
     
-class User_Recipe_Ingredient(Model):
+class User_Recipe_Ingredient(Base):
     __tablename__ = "user_recipe_ingredient"
 
     user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
