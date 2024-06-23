@@ -13,6 +13,7 @@ fastapi-jwt-auth = "*"
 passlib = "*"
 pydantic = "<2.0"
 bcrypt = "==3.2.0"
+python-jose = "*"
 
 [dev-packages]
 
