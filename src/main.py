@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from . import models
 from .database import engine, SessionLocal, get_db
-from .routers import user, category
+from .routers import user, category, ingredient
 
 load_dotenv()  # Load environment variables from .env file
 
@@ -27,6 +27,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app.include_router(user.router)
 app.include_router(category.router)
+app.include_router(ingredient.router)
 
 @app.get("/")
 def index():

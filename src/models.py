@@ -64,3 +64,35 @@ class User_Recipe(Base):
             "ingredients": self.ingredients,
             "directions": self.directions,
         }
+    
+class User_Recipe_Ingredient(db.Model):
+    __tablename__ = "user_recipe_ingredient"
+
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("user_recipe.recipe_id"), nullable=False)
+    user_recipe_ingredient_id = db.Column(db.Integer, primary_key=True)
+    calories = db.Column(db.Float, nullable=True)
+    protein_in_grams = db.Column(db.Float, nullable=True)
+    carbohydrates_in_grams = db.Column(db.Float, nullable=True)
+    fats_in_grams = db.Column(db.Float, nullable=True)
+    sodium_in_mg = db.Column(db.Float, nullable=True)
+    cholestorol_in_mg = db.Column(db.Float, nullable=True)
+    fiber_in_grams = db.Column(db.Float, nullable=True)
+    sugars_in_grams = db.Column(db.Float, nullable=True)
+
+    def __repr__(self):
+        return f'<User_Recipe_Ingredient {self.user_recipe_ingredient_id}>'
+    
+    def serialize(self):
+        return {
+            "user_id": self.user_id,
+            "recipe_id": self.recipe_id,
+            "calories": self.calories,
+            "protein_in_grams": self.protein_in_grams,
+            "carbohydrates_in_grams": self.carbohydrates_in_grams,
+            "fats_in_grams": self.fats_in_grams,
+            "sodium_in_mg": self.sodium_in_mg,
+            "cholestorol_in_mg": self.cholestorol_in_mg,
+            "fiber_in_grams": self.fiber_in_grams,
+            "sugars_in_grams": self.sugars_in_grams
+        }
