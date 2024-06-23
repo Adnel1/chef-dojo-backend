@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, Float, String
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -65,20 +65,20 @@ class User_Recipe(Base):
             "directions": self.directions,
         }
     
-class User_Recipe_Ingredient(db.Model):
+class User_Recipe_Ingredient(Model):
     __tablename__ = "user_recipe_ingredient"
 
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    recipe_id = db.Column(db.Integer, db.ForeignKey("user_recipe.recipe_id"), nullable=False)
-    user_recipe_ingredient_id = db.Column(db.Integer, primary_key=True)
-    calories = db.Column(db.Float, nullable=True)
-    protein_in_grams = db.Column(db.Float, nullable=True)
-    carbohydrates_in_grams = db.Column(db.Float, nullable=True)
-    fats_in_grams = db.Column(db.Float, nullable=True)
-    sodium_in_mg = db.Column(db.Float, nullable=True)
-    cholestorol_in_mg = db.Column(db.Float, nullable=True)
-    fiber_in_grams = db.Column(db.Float, nullable=True)
-    sugars_in_grams = db.Column(db.Float, nullable=True)
+    user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
+    recipe_id = Column(Integer, ForeignKey("user_recipe.recipe_id"), nullable=False)
+    user_recipe_ingredient_id = Column(Integer, primary_key=True)
+    calories = Column(Float, nullable=True)
+    protein_in_grams = Column(Float, nullable=True)
+    carbohydrates_in_grams = Column(Float, nullable=True)
+    fats_in_grams = Column(Float, nullable=True)
+    sodium_in_mg = Column(Float, nullable=True)
+    cholestorol_in_mg = Column(Float, nullable=True)
+    fiber_in_grams = Column(Float, nullable=True)
+    sugars_in_grams = Column(Float, nullable=True)
 
     def __repr__(self):
         return f'<User_Recipe_Ingredient {self.user_recipe_ingredient_id}>'
