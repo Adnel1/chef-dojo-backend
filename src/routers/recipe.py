@@ -42,7 +42,7 @@ def get_recipes_by_category(user_id: int, category_id: int, db: Session = Depend
     
     return recipes
 
-@router.get('/recipe/{recipe_id}', response_model=UserRecipe)
+@router.get('/recipes/{recipe_id}', response_model=UserRecipe)
 def get_recipe_by_id(recipe_id: int, db: Session = Depends(get_db)):
     # Query the User_Recipe table to get the recipe with the specified ID
     recipe = db.query(User_Recipe).filter_by(recipe_id=recipe_id).first()
@@ -53,7 +53,7 @@ def get_recipe_by_id(recipe_id: int, db: Session = Depends(get_db)):
 
     return recipe
 
-@router.delete('/recipe/{recipe_id}', response_model=dict)
+@router.delete('/recipes/{recipe_id}', response_model=dict)
 def delete_recipe_by_id(recipe_id: int, db: Session = Depends(get_db)):
     # Query the User_Recipe table to get the recipe with the specified ID
     recipe = db.query(User_Recipe).filter_by(recipe_id=recipe_id).first()

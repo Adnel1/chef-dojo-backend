@@ -1,6 +1,6 @@
-from fastapi import APIRouter, HTTPException, Depends, Request
+from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
-from typing import List, Optional
+from typing import List
 from ..database import get_db
 from ..models import User_Category
 from pydantic import BaseModel
@@ -32,7 +32,7 @@ async def create_category(user_id: int, category: CategoryCreate, db: Session = 
 
     return user_category
 
-# Get category from a user
+# Get categories from a user
 @router.get("/categories/{user_id}", response_model=List[Category])
 async def get_categories(user_id: int, db: Session = Depends(get_db)):
     user_categories = db.query(User_Category).filter_by(user_id=user_id).all()
@@ -54,3 +54,17 @@ async def delete_category(user_id: int, category_id: int, db: Session = Depends(
     db.commit()
 
     return {"msg": "Category deleted successfully"}
+
+# Get category by category_id
+@router.get('/category/{category_id}', response_model=Category, status_code=status.HTTP_200_OK)
+def get_category_by_id(category_id: int, db: Session = Depends(get_db)):
+    try:
+        # Fetch the category from the database
+        category = db.query(User_Category).filter_by(category_id=category_id).first()
+        
+        if not category:
+            raise HTTPException(status_code=404, detail="Category not found")
+        
+        return category
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")

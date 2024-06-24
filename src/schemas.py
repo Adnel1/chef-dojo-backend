@@ -20,3 +20,13 @@ class UserRecipe(UserRecipeBase):
 
     class Config:
         orm_mode = True
+
+class UserCategoryBase(BaseModel):
+    user_id: int
+    category_name: str
+
+    class Config:
+        orm_mode = True
+
+class UserCategory(UserCategoryBase):
+    category_id: int
