@@ -37,14 +37,13 @@ packaging==24.0
 passlib==1.7.4
 psycopg2-binary==2.9.9
 pycparser==2.22
-pydantic==1.10.17
-pydantic-settings==0.2.5
-pydantic_core==2.18.4
+pydantic==2.7.1
+pydantic-settings==2.2.1
 Pygments==2.18.0
 PyJWT==1.7.1
 python-dotenv==1.0.1
 python-multipart==0.0.9
-pyyaml==6.0 --only-binary :all:
+pyyaml==6.0
 rich==13.7.1
 shellingham==1.5.4
 six==1.16.0
